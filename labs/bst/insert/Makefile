@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=elemtype.o tree.o main.o insert.o dominant.o treemax.o
+OBJS=elemtype.o tree.o main.o insert.o dominant.o treemax.o delete.o mirror.o
 BIN = main
 
 all:$(BIN)
