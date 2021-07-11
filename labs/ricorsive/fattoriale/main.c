@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-extern unsigned long long fattoriale(int n);
+extern unsigned long long Fattoriale(int n);
 
 int main (void){
 
 
     unsigned long long f;
-    f= fattoriale(2);
+    f= Fattoriale(-2);
     printf("%lld\n", f);
-    f= fattoriale(10);
+    f= Fattoriale(1);
     printf("%lld\n", f);
-    f= fattoriale(5);
+    f= Fattoriale(5);
     printf("%lld\n", f);
-    f= fattoriale(19);
+    f= Fattoriale(19);
     printf("%lld\n", f);
-    f= fattoriale(-1);
+    f= Fattoriale(0);
     printf("%lld\n", f);
 
 
