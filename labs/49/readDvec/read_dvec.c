@@ -9,10 +9,9 @@ struct dvec *read_dvec_comp(const char *filename){
     FILE *f = fopen(filename, "rb");
 
 
-    if (!f){
+    if (f == NULL ){
         struct dvec *out = malloc(sizeof(struct dvec));
         out->n = 0;
-        out->d = malloc(1*sizeof(double));
         out->d = NULL;
         return out;
     }
@@ -45,7 +44,7 @@ struct dvec *read_dvec_comp(const char *filename){
         short u;
 
         //size_t ret = fscanf(f, "%2hx", &u);
-        size_t ret = fread(&u, sizeof(u), 1, f);
+        fread(&u, sizeof(u), 1, f);
 
         
 
