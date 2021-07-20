@@ -1,13 +1,13 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=elemtype.o list.o main.o any_loop.o 
+OBJS=main.o prezzo.o
 BIN = main
 
 all:$(BIN)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main
+	$(CC) $(CFLAGS) $(OBJS) -lm -o main
 
 
 %.o: %.c

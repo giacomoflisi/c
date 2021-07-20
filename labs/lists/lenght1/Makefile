@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=elemtype.o list.o main.o any_loop.o 
+OBJS=elemtype.o list.o main.o length.o 
 BIN = main
 
 all:$(BIN)

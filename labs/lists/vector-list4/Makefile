@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=elemtype.o list.o main.o any_loop.o 
+OBJS=elemtype.o list.o main.o vector_list.o 
 BIN = main
 
 all:$(BIN)
@@ -14,7 +14,7 @@ main: $(OBJS)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	rm *.o main
+	rm a.out *.o main
 
 
 
