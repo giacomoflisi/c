@@ -1,51 +1,32 @@
 #include "list.h"
 #include "elemtype.h"
 
+extern Item *ListLoad(const char *filename);
+
 int main (void){
 
-    ElemType e[] = {0, 1, 2, 3, 4};
+    Item *listzero = ListCreateEmpty();
+    Item *listone = ListCreateEmpty();
+    Item *listtwo = ListCreateEmpty();
+    Item *listempty = ListCreateEmpty();
 
-    Item *list = ListCreateEmpty();
-    // Item *list = NULL;
-    list = ListInsertHead(e+0, list);
-    list = ListInsertHead(e+1, list);
-    list = ListInsertHead(e+2, list);
-    list = ListInsertHead(e+3, list);
-    list = ListInsertHead(e+4, list);
-    //lista creata inizializzata
+    listzero = ListLoad("data_00.txt");
+    listone = ListLoad("data_01.txt");
+    listtwo = ListLoad("data_02.txt");
+    listempty = ListLoad("empty.txt");
 
-    //tutte le volte che aggiorno il puntatore della testa
-    //sto perdendo il riferimento a quella prima, 
-    //quindi se ne ho bisogno devo salvarmela da qualche parte
+    Item *nonesiste = ListLoad("nonesiste.txt");
+    ListWriteStdout(nonesiste);
+    ListDelete(nonesiste);
 
-    Item *tmp = list; //mi salvo l'indirizzo del primo elemento(testa)
-    //itero fino a quando la lista non è vuota
-    while (!ListIsEmpty(tmp)) {
-        //operazioni con tmp corrente
+    ListWriteStdout(listzero);
+    ListWriteStdout(listone);
+    ListWriteStdout(listtwo);
+    ListWriteStdout(listempty);
 
-        tmp = ListGetTail(tmp); // in questo modo tmp punta all'elemento successivo
-    }
-
-/*
-    //versione senza primitive
-    Item *tmp = list;
-    while (tmp) { //fino a che tmp non è NULL vado avanti
-        //operazioni con tmp 
-        tmp = tmp->next;
-    }
- 
-
-    //versione con for loop
-    for (Item *tmp = list; !ListIsEmpty(tmp); tmp = ListGetTail(tmp)) {
-        //operazioni
-    }
-
-    //forloop senza primitive
-    for (Item *tmp = list; tmp; tmp = tmp->next) {
-        //operazioni
-    }
-*/
-
-    ListDelete(list); //libero la memoria occupata dagli elementi della lista
+    ListDelete(listzero);
+    ListDelete(listone);
+    ListDelete(listtwo); //libero la memoria occupata dagli elementi della lista
+    ListDelete(listempty);
     return 0;
 }

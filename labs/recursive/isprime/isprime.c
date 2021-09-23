@@ -1,38 +1,29 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
 
-bool isprimeRec(int n, int i ){
+void isprime(int n, int i){
 
-    if (n % i == 0)  {
-        return false;
+    if (i == 1) {
+        printf("true");
+        return;
     }
 
-    if (i*i >n ){
-        return true;
+    if (n == 1 || n == 0 || n%i == 0){
+        printf("false");
+        return;
     }
 
-    return isprimeRec(n, i+1);
-
-
+    isprime(n, i-1);
 }
 
-int isprime(int argc, char **argv){
+int main (int argc, char **argv){
 
-    if (argc != 2 || atoi(argv[1]) <0) {
+    if (argc != 2 || atoi(argv[1]) < 0)
         return 1;
-    }
-    
-    int i = 2;
 
-    unsigned int n = (atoi(argv[1]));
+    int n = atoi(argv[1]);
+    isprime(n, n/2);
 
-    if ( n == 2 || isprimeRec(n, i) ) {
-        printf("true");
-
-    } else {
-        printf("false");
-    }
-    
     return 0;
 }

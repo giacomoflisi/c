@@ -14,7 +14,7 @@ main: $(OBJS)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	rm a.out *.o main
+	rm *.o main
 
 
 

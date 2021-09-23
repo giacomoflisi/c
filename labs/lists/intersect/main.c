@@ -33,6 +33,8 @@ int main (void){
     //di 2 item NON modificabili
     Item *ris = Intersect(list_a, list_b);
 
+    ListWriteStdout(ris);
+
     ListDelete(ris);
     ListDelete(list_a);
     ListDelete(list_b);

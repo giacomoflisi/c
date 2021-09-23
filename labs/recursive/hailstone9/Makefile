@@ -1,20 +1,20 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=hailstone.o main.o
-BIN = main
+OBJS=hailstone.o
+BIN = hailstone
 
 all:$(BIN)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main
+	$(CC) $(CFLAGS) $(OBJS) -o hailstone
 
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	rm *.o main
+	rm *.o hailstone
 
 
 
