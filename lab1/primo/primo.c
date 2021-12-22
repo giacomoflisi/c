@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdbool.h>
 
 static bool isPrime(unsigned int val, int i){
@@ -11,7 +12,7 @@ static bool isPrime(unsigned int val, int i){
     return isPrime(val, i-1);
 }
 
-int primo (unsigned int val){
+int primo(unsigned int val){
 
-    return (int)isPrime(val, val/2);
+    return (int)isPrime(val, sqrt(val));
 }

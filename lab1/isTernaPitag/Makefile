@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=main.o somma_cifre.o 
+OBJS=main.o terna.o 
 BIN = main
 
 all:$(BIN)

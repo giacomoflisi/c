@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=main.o division.o 
+OBJS=main.o divisione.o 
 BIN = main
 
 all:$(BIN)

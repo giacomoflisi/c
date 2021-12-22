@@ -3,6 +3,9 @@
 
 double media(double *x, unsigned int n){
 
+    if (!x)
+        return 0;
+
     double res = 0;
 
     for(size_t i = 0; i<n; i++){
@@ -15,6 +18,9 @@ double media(double *x, unsigned int n){
 }
 
 double varianza(double *x, unsigned int n){
+
+    if (!x)
+        return 0;
 
     if (n<2)
         return 0;

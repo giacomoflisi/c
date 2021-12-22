@@ -1,13 +1,13 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=main.o somma_cifre.o 
+OBJS=calcola_seno.o main.o
 BIN = main
 
 all:$(BIN)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main
+	$(CC) $(CFLAGS) $(OBJS) -o main -lm
 
 
 %.o: %.c

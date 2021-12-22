@@ -7,7 +7,7 @@ BIN = main
 all:$(BIN)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main
+	$(CC) $(CFLAGS) $(OBJS) -o main -lm
 
 
 %.o: %.c
