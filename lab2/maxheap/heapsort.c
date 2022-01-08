@@ -6,24 +6,25 @@ void HeapMaxHeapsort(Heap *h){
     if (HeapIsEmpty(h))
         return;
 
-    //mi salvo la lunghezza dell'heap originale
+    //saving original heap size
     size_t og_size = h->size;
 
     while(h->size > 1){
 
+        //swapping first with last element value
         ElemSwap(HeapGetNodeValue(h, 0), HeapGetNodeValue(h, h->size-1));
 
-        //ora il maggiore è in ultima posizione; posizione corretta
-        //accorcio l'Heap
+        //now the biggest value is in the right position, at the end of the array
+        //decreasing heap size
         h->size -= 1;
 
-        //riordino
+        //reordering (moving down the element that i just swapped in first pos)
         HeapMaxMoveDown(h, 0);
 
-    } //ripeto fino a quando ho un heap di 1 elemento
+    } //repeat until array is down to 2 elements
 
-    //aggiorno la size con quella originale
 
+    //resetting h->size to the original size
     h->size = og_size;
 
 }
