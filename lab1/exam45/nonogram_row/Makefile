@@ -1,13 +1,13 @@
 
 CC=gcc
 CFLAGS=-g -Wall
-OBJS=decode.o encode.o main.o
+OBJS=nonogram_row.o main.o
 BIN = main
 
 all:$(BIN)
 
 main: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o main -lm
+	$(CC) $(CFLAGS) $(OBJS) -o main
 
 
 %.o: %.c
