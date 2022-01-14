@@ -1,32 +1,28 @@
-
 #include "list.h"
 
 Item *Reverse(Item *i){
 
-    Item *curr, *prev;
-    Item *head = i;
+    Item *next, *curr, *prev;
 
-    if (!ListIsEmpty(head)){
+    curr = i;
+    prev = NULL;
+    next = NULL;;
 
-        prev = head;
-        head = ListGetTail(head);
-        curr = head;
 
-        prev->next = NULL;
+    while(curr){
 
-        while (!ListIsEmpty(head)){
-        
-            head = head->next;
+        next = ListGetTail(curr);
 
-            curr->next = prev;
-            prev = curr;
-        
-            curr = head;
-        }
+        //switch the arrows
+        curr->next = prev;
 
-        i = prev;
-        return i;
+
+        prev = curr;
+        curr = next;
     }
 
+
+    i = prev;
     return i;
+
 }

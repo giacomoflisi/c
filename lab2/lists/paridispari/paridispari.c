@@ -1,38 +1,70 @@
-
 #include "list.h"
+
+//reorders the input list by putting all even numbers before odd numbers 
+//witout allocating new memory
 
 Item *PariDispari(Item *i){
 
-    if (ListIsEmpty(i)){
+    //empty list
+    if (ListIsEmpty(i))
         return NULL;
-    }
 
+    //single item list
     if (ListIsEmpty(ListGetTail(i)))
         return i;
 
-    Item *prev = i;
-    Item *head = ListGetTail(i);
-    Item *mid = NULL;
+    Item *odd_head = NULL;
+    Item *even_head = NULL;
+    Item *odd_tail = NULL;
+    Item *even_tail = NULL;
 
-    while (!ListIsEmpty(prev)){
+    Item *curr = i;
 
-        if (*ListGetHeadValue(prev) % 2 == 0){ //pari
+    while(curr){
 
-            break;
+        if ((*ListGetHeadValue(curr)) & 1){
+        //current node is odd
 
+            if (!odd_head){ //found first odd number
+                odd_head = odd_tail = curr;
+            } else {
+                //found another odd num
+                //adding it to the tail
+                odd_tail->next = curr;
+                odd_tail = ListGetTail(odd_tail);
+            }
 
-        }else if (!mid){
+        } else {
+            //curent node is even
+            if (!even_head){
+                //setting even head
+                even_head = even_tail = curr;
+            } else {
+                //setting other even numbers after tail
 
-            mid = prev;            
-        }else{
-
-            prev->next = mid;
-
+                even_tail->next = curr;
+                even_tail = ListGetTail(even_tail);
+            }
         }
 
-        prev = ListGetTail(prev);
-
+        curr = curr->next;
     }
 
-    return mid;
+    //if there is at least one even node
+    if (even_head){
+
+        i = even_head;
+        even_tail->next = odd_head;
+
+    } else {
+        i = odd_head;
+    }
+
+    if (odd_tail){
+
+        odd_tail->next = NULL;
+    } 
+
+    return i;
 }
+

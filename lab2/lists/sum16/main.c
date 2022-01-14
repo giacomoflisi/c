@@ -9,7 +9,6 @@ int main (void){
     ElemType e[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     Item *i = ListCreateEmpty();
-    i = ListInsertBack(i, e+0);
     i = ListInsertBack(i, e+1);
     i = ListInsertBack(i, e+2);
     i = ListInsertBack(i, e+3);
