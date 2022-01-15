@@ -19,9 +19,9 @@ extern int AssegnaBiscotti(const int *bam, size_t bam_size,
 int main (void){
 
     int bam[] = {10, 20, 25, 30, 5, 60};
-    size_t bam_size = 6;
+    size_t bam_size = sizeof bam /sizeof *bam;
     int bis[] = {10, 6, 7, 8, 20, 50};
-    size_t bis_size = 6;
+    size_t bis_size = sizeof bis /sizeof *bis;
     int ret = AssegnaBiscotti(bam, bam_size, bis, bis_size);
 
     printf("%d bambini soddisfatti\n", ret);

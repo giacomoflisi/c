@@ -4,26 +4,31 @@
 #include "prezzo.h"
 
 static void TrovaArticoloRec(const struct Articolo *a, size_t a_size, int sum, bool *vcurr, int i, int scurr){
+
     if (scurr == sum){
         //print soluzione
         for (int j = 0; j<i; ++j){
-            if (vcurr[j]){
+            if (vcurr[j]){ //if vcurr true, significa che ho utilizzato l'elemento
                 printf("%s, ", a[j].nome);
 
             }
 
         }
+
         printf("\n");
         return;
     }
+    
 
+    //base
     if (i == a_size)
         return;
 
-    //esploro il ramo a sinistra
+    //esploro il ramo a sinistra (non prendo l'articolo)
     TrovaArticoloRec(a, a_size, sum, vcurr, i+1, scurr);
 
-    //se rispetto i vincoli allora scelgo di prendere l'elemento corrente (ramo destro)
+    //solo se rispetto i vincoli allora scelgo di prendere l'elemento corrente 
+    //(ramo destro)
     if (scurr + a[i].prezzo <= sum){
 
         scurr += a[i].prezzo;
@@ -37,6 +42,7 @@ static void TrovaArticoloRec(const struct Articolo *a, size_t a_size, int sum, b
 
 void TrovaArticolo(const struct Articolo *a, size_t a_size, int sum){
 
+    //invalid input
     if (a==NULL || a_size==0){
         return;
     }
@@ -44,9 +50,10 @@ void TrovaArticolo(const struct Articolo *a, size_t a_size, int sum){
 
     bool *vcurr = calloc(a_size, sizeof(bool));
 
-    int i = 0;          //indice articolo
+    int i = 0;     //indice articolo
     int scurr = 0; //valore tot degli articoli scelti nella soluzione vcurr
 
     TrovaArticoloRec(a, a_size, sum, vcurr, i, scurr);
 
+    free(vcurr);
 }
