@@ -2,7 +2,6 @@
 
 extern bool Cugini(const Node* t, int a, int b);
 
-
 int main (void){
 
     ElemType e[] = {0, 1, 2, 3, 4, 5, 6};
