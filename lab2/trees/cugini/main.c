@@ -9,10 +9,8 @@ int main (void){
     Node *t1 = TreeCreateRoot(&e[0], 
                     TreeCreateRoot(&e[1], NULL, NULL),
                     TreeCreateRoot(&e[2], NULL, NULL));
-    //          0
-    //         / \
-    //        1   2
 
+    TreeWriteStdoutInOrder(t1);
     if (Cugini(t1, 1, 2))
         printf("t1 cugini\n");
 
@@ -21,11 +19,8 @@ int main (void){
                         TreeCreateRoot(&e[4], NULL, NULL),
                         TreeCreateRoot(&e[2], NULL, NULL)),
                     TreeCreateRoot(&e[3], NULL, NULL));
-    //          0
-    //         / \
-    //        1   3
-    //       / \
-    //      4   2
+
+    TreeWriteStdoutInOrder(t2);
     if (Cugini(t2, 4, 2))
         printf("t2 cugini\n");
 
@@ -37,15 +32,9 @@ int main (void){
                         TreeCreateRoot(&e[5],  
                             TreeCreateRoot(&e[4], NULL, NULL), 
                             TreeCreateRoot(&e[6], NULL, NULL)) ));
-    //          2 
-    //         / \
-    //        0   3
-    //         \   \
-    //          1   5
-    //             / \
-    //            4  6
 
-    if (Cugini(bst, 4, 1))
+    TreeWriteStdoutInOrder(bst);
+    if (Cugini(bst, 1, 5))
         printf("bst cugini\n");
 
 

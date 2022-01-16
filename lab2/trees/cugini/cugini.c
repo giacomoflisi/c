@@ -1,40 +1,32 @@
-
 #include "tree.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
-int NHeight(const Node *t, int n){
+static void NHeight(const Node *t, int n, size_t *best, size_t curr){
 
     //base
-    if (*TreeGetRootValue(t) == n || TreeIsEmpty(t) || TreeIsLeaf(t))
-        return 0;
+    if (t && *TreeGetRootValue(t) == n){
+        *best = curr;
+    }
+
+    if (TreeIsEmpty(t) || TreeIsLeaf(t)){
+        return;
+    }
 
 
-    return 1+  abs(NHeight(TreeLeft(t), n) - (NHeight(TreeRight(t), n)));
+    NHeight(TreeLeft(t), n, best, curr+1);
+    NHeight(TreeRight(t), n, best, curr+1);
 }
 
-bool SameHeight (const Node *t, int a, int b){
-
-    if (TreeIsEmpty(t))
-        return false;
-    
-
-    
-
-
-    return SameHeight(TreeLeft(t), a, b);
-    return SameHeight(TreeRight(t), a, b);
-}
 
 bool Brothers (const Node *t, int a, int b){
 
-    if (TreeIsEmpty(t))
+    if (TreeIsEmpty(t) || TreeIsEmpty(TreeLeft(t)) || TreeIsEmpty(TreeRight(t)))
         return false;
 
     if ((*TreeGetRootValue(TreeLeft(t)) == a && *TreeGetRootValue(TreeRight(t)) == b ) || 
          (*TreeGetRootValue(TreeLeft(t)) == b && *TreeGetRootValue(TreeRight(t)) == a )){
 
-        //brothers
         return true;
     }
 
@@ -44,5 +36,16 @@ bool Brothers (const Node *t, int a, int b){
 
 bool Cugini (const Node *t, int a, int b){
 
-    return !Brothers(t, a, b) && SameHeight(t, a, b);
+    size_t height_a = 0;
+    NHeight(t, a, &height_a, 0);
+
+    size_t height_b= 0;
+    NHeight(t, b, &height_b, 0);
+
+    if (!Brothers(t, a, b) && (height_a == height_b)){
+
+        return true;
+    }
+
+    return false;
 }
