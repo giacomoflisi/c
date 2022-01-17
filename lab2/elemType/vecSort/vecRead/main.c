@@ -1,12 +1,12 @@
 
 #include "vettore.h"
-#include <stdlib.h>
 
 
 int main (void){
 
-    Vector *v1 = VectorReadSorted("input1.txt");
-    Vector *v2 = VectorReadSorted("input2.txt");
+    Vector *v1 = VectorRead("input1.txt");
+    Vector *v2 = VectorRead("input2.txt");
+
 
 
     printf("v1[");
@@ -21,9 +21,5 @@ int main (void){
     }
     printf("]\n");
     
-    free(v1->data);
-    free(v1);
-    free(v2->data);
-    free(v2);
     return 0;
 }
